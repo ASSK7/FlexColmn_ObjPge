@@ -1,0 +1,20 @@
+<mvc:View controllerName="com.dp.onlinekart.controller.LoginPage"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:l='sap.ui.layout' xmlns:f="sap.f">
+    <Page id="page" title="{i18n>title}">
+        <content>
+         <FlexBox alignItems="Center" justifyContent="Center">
+						<f:Card class="sapUiMediumMargin" width="280px">
+							<f:content>
+								<VBox alignItems="Center" alignContent="Center" class="sapUiLargeMarginTop sapUiLargeMarginBegin">
+									<Avatar displaySize="XL" src="./images/ui5.png"></Avatar>
+									<Input placeholder="Enter User Name"></Input>
+									<Input placeholder="Enter Password" type="Password"></Input>
+									<Button id="idbtn" text="Login" press="onLogin" type="Emphasized"></Button>
+								</VBox>
+							</f:content>
+						</f:Card>
+					</FlexBox>
+        </content>
+    </Page>
+</mvc:View>

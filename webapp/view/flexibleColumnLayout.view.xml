@@ -1,0 +1,178 @@
+<mvc:View controllerName="com.dp.onlinekart.controller.flexibleColumnLayout"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:f="sap.f" xmlns:ux="sap.uxap"
+	xmlns:sf="sap.ui.layout.form" xmlns:layout="sap.ui.layout"
+    xmlns="sap.m">
+   <App>
+		<pages>
+			<Page title="Online Kart">
+				<content>
+					<f:FlexibleColumnLayout layout='{products>/layout}' class="sapFDynamicPageAlignContent" width="auto">
+						<f:beginColumnPages>
+						<f:DynamicPage id="dynamicPageId"
+				   toggleHeaderOnTitleClick="false">
+				   <f:content>
+							<Table items="{products>/items}" fixedLayout="false" growing="true">
+								<columns>
+									<Column>
+										<Label text="Product" design="Bold"></Label>
+									</Column>
+									<Column>
+										<Label text="Price" design="Bold"></Label>
+									</Column>
+								
+								</columns>
+								<items>
+									<ColumnListItem navigated="true" type="Navigation" press="onTable">
+										<cells>
+											<Text text="{products>title}"></Text>
+											<ObjectNumber number="{ parts:[{path:'products>price'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"
+												unit="{products>CurrencyCode}"/>
+											
+											<!--<Text text="{products>price}"></Text>-->
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+							
+						</f:content>
+						</f:DynamicPage>
+						</f:beginColumnPages>
+						<f:midColumnPages>
+							<ux:ObjectPageLayout>
+								<ux:headerTitle>
+									<ux:ObjectPageDynamicHeaderTitle>
+										<ux:breadcrumbs>
+											<Breadcrumbs>
+												<Link href="https://www.instagram.com/cristiano/" text="Instagram"></Link>
+												<Link href="https://twitter.com/Cristiano?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" text="Twitter"></Link>
+											</Breadcrumbs>
+										</ux:breadcrumbs>
+										<ux:expandedHeading>
+											<HBox>
+												<Title text="{user>/logins/fullName}"></Title>
+												<ObjectMarker type="Favorite"></ObjectMarker>
+											</HBox>
+										</ux:expandedHeading>
+										<ux:snappedContent>
+											<FlexBox fitContainer="true" alignItems="Center">
+												<!--<Avatar src="https://images.indianexpress.com/2018/07/cristiano-ronaldo-fb1.jpg?w=414"></Avatar>-->
+												<Avatar displaySize="XL" src="{user>/logins/pic}"></Avatar>
+												<Title text="{user>/logins/designation}"></Title>
+											</FlexBox>
+										</ux:snappedContent>
+									</ux:ObjectPageDynamicHeaderTitle>
+								</ux:headerTitle>
+								<!--Header Content-->
+								<ux:headerContent>
+									<FlexBox wrap="Wrap">
+										<!--<Avatar displaySize="XL" src="https://images.indianexpress.com/2018/07/cristiano-ronaldo-fb1.jpg?w=414"></Avatar>-->
+											<Avatar displaySize="XL" src="{user>/logins/pic}"></Avatar>
+										<layout:VerticalLayout>
+											<Link text="{user>/logins/phone}"></Link>
+											<Link text="{user>/logins/mail}"></Link>
+										</layout:VerticalLayout>
+										<!--<layout:HorizontalLayout>-->
+										<!--	<Image-->
+										<!--		src="https://w7.pngwing.com/pngs/477/609/png-transparent-logo-computer-icons-instagram-logo-instagram-logo-miscellaneous-text-trademark.png" height="1%" width="1%"/>-->
+										<!--	<Image-->
+										<!--		src="https://e7.pngegg.com/pngimages/708/311/png-clipart-twitter-twitter-thumbnail.png" height="1%" width="1%" -->
+										<!--		class="sapUiSmallMarginBegin"/>-->
+										<!--</layout:HorizontalLayout>-->
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+											<Label text="{user>/logins/designation}"/>
+											<ProgressIndicator percentValue="30" displayValue="30%"/>
+										</layout:VerticalLayout>
+										
+										<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+											<Label text="{user>/logins/place}"/>
+										</layout:VerticalLayout>
+									</FlexBox>
+								</ux:headerContent>
+								<ux:sections>
+									<ux:ObjectPageSection title="Product Details">
+										<ux:subSections>
+											<ux:ObjectPageSubSection title='{products>title}'>
+												<ux:blocks>
+													<sf:SimpleForm backgroundDesign="Solid" layout="ResponsiveGridLayout">
+														<sf:content>
+															<Label text="Product"></Label>
+															<Text text="{products>title}"></Text>
+															<Label text="Product Type"></Label>
+															<Text text="{products>type}"></Text>
+															<Label text="Product Details"></Label>
+															<Text text="{products>description}"></Text>
+															<Label text="Product Price"></Label>
+															<Text text="{products>price}"></Text>
+														</sf:content>
+													</sf:SimpleForm>
+												</ux:blocks>
+											</ux:ObjectPageSubSection>
+										</ux:subSections>
+									</ux:ObjectPageSection>
+									<!--Second Object Page Section-->
+									<ux:ObjectPageSection title="Product Details">
+										<ux:subSections>
+											<ux:ObjectPageSubSection title='Check Out'>
+												<ux:blocks>
+													<sf:SimpleForm editable="true" backgroundDesign="Solid" layout="ResponsiveGridLayout">
+														<sf:content>
+															<Label text="Product"></Label>
+															<Text text="{products>title}"></Text>
+															<Label text="Product Price"></Label>
+															<Text text="{products>price}"></Text>
+															<Label text="Quantity"></Label>
+															<StepInput width="35%"></StepInput>
+															<Button text="Place Order" width="40%" press="onOrder" type="Emphasized"></Button>
+														</sf:content>
+													</sf:SimpleForm>
+												</ux:blocks>
+											</ux:ObjectPageSubSection>
+										</ux:subSections>
+									</ux:ObjectPageSection>
+									<!--Third Object Page Section-->
+									<ux:ObjectPageSection title="Product Details">
+										<ux:subSections>
+											<ux:ObjectPageSubSection title='Orders'>
+												<ux:blocks>
+													<Table items="{products>/orders}">
+														<columns>
+															<Column>
+																<Label text="Product" design="Bold"></Label>
+															</Column>
+															<Column>
+																<Label text="Price" design="Bold"></Label>
+															</Column>
+															<Column>
+																<Label text="Quantity" design="Bold"></Label>
+															</Column>
+																<Column>
+										<Label text="Total Amount" design="Bold"></Label>
+									</Column>
+														</columns>
+														<items>
+															<ColumnListItem>
+																<cells>
+																	<Text text="{products>title}"></Text>
+																	<Text text="{products>price}"></Text>
+																	<Text text="{products>quantity}"></Text>
+																		<Text text="{products>total}"></Text>
+																</cells>
+															</ColumnListItem>
+														</items>
+													</Table>
+												</ux:blocks>
+											</ux:ObjectPageSubSection>
+										</ux:subSections>
+									</ux:ObjectPageSection>
+								</ux:sections>
+							</ux:ObjectPageLayout>
+						</f:midColumnPages>
+						<f:endColumnPages>
+							<Text text='End'></Text>
+						</f:endColumnPages>
+					</f:FlexibleColumnLayout>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

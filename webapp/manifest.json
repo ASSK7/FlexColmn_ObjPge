@@ -1,0 +1,121 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "com.dp.onlinekart",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.9.4",
+      "toolsId": "6a4f9d1a-307e-44f2-9a42-88967d32269a"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.113.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.dp.onlinekart.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "com.dp.onlinekart.view",
+        "controlAggregation": "pages",
+        "controlId": "idApp",
+        "clearControlAggregation": true
+      },
+      "routes": [
+        {
+          "name": "flexibleColumnLayout",
+          "pattern": "flex/{user}",
+          "target": [
+            "flexibleColumnLayout"
+          ]
+        },
+        {
+          "name" : "LoginPage",
+          "pattern" : "",
+          "target": ["LoginPage"]
+        }
+      ],
+      "targets": {
+        "flexibleColumnLayout": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": true,
+          "viewName": "flexibleColumnLayout",
+          "controlAggregation": "pages",
+          "viewLevel": 2,
+          "controlId": "idApp"
+        },
+        "LoginPage": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": true,
+          "viewName": "LoginPage",
+          "controlAggregation": "pages",
+          "viewLevel": 1,
+          "controlId": "idApp"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.dp.onlinekart.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "idApp"
+    }
+  }
+}
